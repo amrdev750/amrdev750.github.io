@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found — Amr</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#05070b" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/sora-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .error-page {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        min-height: 100svh;
+        place-items: center;
+        padding: 96px 24px 64px;
+      }
+
+      .error-card {
+        position: relative;
+        width: min(560px, 100%);
+        padding: clamp(2rem, 7vw, 3.6rem);
+        border-radius: 30px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .error-card::before {
+        content: "";
+        position: absolute;
+        top: -170px;
+        left: 50%;
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(94, 234, 212, 0.16), transparent 68%);
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+
+      .error-card > * {
+        position: relative;
+      }
+
+      .error-code {
+        margin: 0.2rem 0 0;
+        font-family: var(--font-serif);
+        font-size: clamp(4.6rem, 16vw, 7rem);
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        background: linear-gradient(100deg, var(--teal), var(--blue) 55%, var(--violet));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .error-card h1 {
+        margin: 0.4rem 0 0;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 500;
+        letter-spacing: -0.03em;
+      }
+
+      .error-card p:not(.label):not(.error-code) {
+        max-width: 38ch;
+        margin: 1rem auto 1.9rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 300;
+        line-height: 1.8;
+      }
+
+      .error-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .error-foot {
+        margin: 2rem 0 0;
+        color: var(--faint);
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true">
+      <span class="blob blob-a"></span>
+      <span class="blob blob-b"></span>
+      <span class="blob blob-c"></span>
+    </div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <main class="error-page" id="main">
+      <div class="error-card glass">
+        <p class="label center"><span>404</span>Off the chart</p>
+        <p class="error-code" aria-hidden="true">Lost?</p>
+        <h1>This page isn't in the notes.</h1>
+        <p>
+          The link may be old, or the page may have moved. The homepage is still
+          exactly where it should be.
+        </p>
+        <div class="error-actions">
+          <a class="btn btn-primary" href="/">Back to the homepage</a>
+          <a class="btn btn-ghost" href="mailto:aziziamr905@gmail.com">Report a broken link</a>
+        </div>
+        <p class="error-foot">Amr · medicine × software</p>
+      </div>
+    </main>
+  </body>
+</html>

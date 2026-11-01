@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="10" y1="8" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5eead4" />
+      <stop offset="55%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#a78bfa" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#070b12" />
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="15.25" fill="none" stroke="url(#g)" stroke-opacity="0.35" />
+  <text
+    x="32"
+    y="45"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="38"
+    fill="url(#g)"
+    text-anchor="middle"
+  >A</text>
+</svg>

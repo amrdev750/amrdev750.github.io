@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amrdev750.github.io/sitemap.xml

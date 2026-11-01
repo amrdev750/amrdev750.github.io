@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Amr — Medical Student &amp; Builder</title>
+    <meta
+      name="description"
+      content="Amr is a second-year medical student exploring medicine, software development, and the human side of healthcare."
+    />
+    <meta name="theme-color" content="#05070b" />
+    <meta property="og:title" content="Amr — Medical Student &amp; Builder" />
+    <meta
+      property="og:description"
+      content="Medicine, code, and the human side of healthcare — notes from a second-year medical student."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Amr" />
+    <meta property="og:url" content="https://amrdev750.github.io/" />
+    <meta property="og:image" content="https://amrdev750.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Amr — medical student and builder" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amr — Medical Student &amp; Builder" />
+    <meta
+      name="twitter:description"
+      content="Medicine, code, and the human side of healthcare — notes from a second-year medical student."
+    />
+    <meta name="twitter:image" content="https://amrdev750.github.io/og-image.png" />
+    <meta name="author" content="Amr" />
+    <link rel="canonical" href="https://amrdev750.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <script>
+      try {
+        if (window.sessionStorage.getItem("amr-intro-seen") === "1") {
+          document.documentElement.classList.add("intro-seen");
+        }
+      } catch (error) {
+        /* storage may be blocked — show the intro as usual */
+      }
+    </script>
+    <link rel="preload" href="fonts/sora-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="fonts/instrument-serif-regular-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/instrument-serif-italic-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+        .intro {
+          display: none;
+        }
+        body.intro-active {
+          overflow: auto;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body class="intro-active">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="intro" id="intro">
+      <div class="intro-inner" aria-hidden="true">
+        <div class="intro-scope">
+          <svg viewBox="0 0 240 320" fill="none">
+            <defs>
+              <linearGradient
+                id="scopeGrad"
+                x1="40"
+                y1="30"
+                x2="200"
+                y2="290"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" stop-color="#5eead4" />
+                <stop offset="55%" stop-color="#60a5fa" />
+                <stop offset="100%" stop-color="#a78bfa" />
+              </linearGradient>
+            </defs>
+
+            <circle class="scope-tip" cx="52" cy="42" r="5" />
+            <circle class="scope-tip" cx="188" cy="42" r="5" />
+
+            <path
+              class="scope-tube scope-tube-a"
+              pathLength="1"
+              d="M52 46C52 94 78 110 97 136C110 154 116 166 116 184"
+            />
+            <path
+              class="scope-tube scope-tube-b"
+              pathLength="1"
+              d="M188 46C188 94 162 110 143 136C130 154 124 166 124 184"
+            />
+            <path
+              class="scope-tube scope-tube-main"
+              pathLength="1"
+              d="M120 184C120 206 120 222 120 238"
+            />
+
+            <g class="scope-chest-group">
+              <circle class="scope-chest" pathLength="1" cx="120" cy="262" r="24" />
+              <circle class="scope-chest-inner" pathLength="1" cx="120" cy="262" r="10" />
+            </g>
+
+            <circle class="scope-halo" cx="120" cy="262" r="27" />
+
+            <g class="scope-waves">
+              <path d="M154 250c6 7 6 17 0 24" />
+              <path d="M166 242c11 12 11 30 0 42" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="intro-copy">
+          <p class="intro-kicker">Listening closely</p>
+          <p class="intro-name">Amr<span>.</span></p>
+          <p class="intro-role">Medical student &amp; builder</p>
+        </div>
+      </div>
+
+      <div class="intro-progress" aria-hidden="true"><span></span></div>
+      <button class="intro-skip" id="introSkip" type="button" aria-label="Skip intro animation">
+        Skip intro
+      </button>
+    </div>
+
+    <div class="aurora" aria-hidden="true">
+      <span class="blob blob-a"></span>
+      <span class="blob blob-b"></span>
+      <span class="blob blob-c"></span>
+    </div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <header class="nav-wrap">
+      <nav class="nav glass" id="nav" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="Amr — home">
+          <span class="brand-mark">A</span>
+          <span class="brand-name">Amr<span class="dot">.</span></span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-expanded="false"
+          aria-controls="navLinks"
+          aria-label="Open menu"
+        >
+          <span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#about" data-nav>About</a>
+          <a href="#focus" data-nav>Focus</a>
+          <a href="#journey" data-nav>Journey</a>
+          <a href="#study" data-nav>Study</a>
+          <a class="btn btn-small btn-primary" href="#contact">Say hello</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ───────────────────────── Hero ───────────────────────── -->
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Medical student · builder
+          </p>
+
+          <h1 class="hero-title reveal">
+            Hi, I'm <span class="grad">Amr</span> —<br />
+            I study the body,<br />
+            and the <em>person</em> inside&nbsp;it.
+          </h1>
+
+          <p class="lede reveal">
+            Second-year medical student (of six) with a soft spot for physiology,
+            clean interfaces, and the moments where science meets empathy. By day I
+            study medicine; by night I build software for it.
+          </p>
+
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#focus">
+              Explore my world
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+
+          <ul class="hero-stats reveal">
+            <li>
+              <strong>UOK</strong>
+              <span>2/6 · medicine</span>
+            </li>
+            <li>
+              <strong>04</strong>
+              <span>focus areas</span>
+            </li>
+            <li>
+              <strong>∞</strong>
+              <span>questions</span>
+            </li>
+          </ul>
+        </div>
+
+        <aside class="vitals glass reveal" aria-label="A playful vitals monitor">
+          <div class="vitals-head">
+            <span class="live"><span class="pulse-dot" aria-hidden="true"></span>Live from the library</span>
+            <span class="mono">23:47</span>
+          </div>
+
+          <svg class="ecg" viewBox="0 0 420 120" role="img" aria-label="Animated heartbeat trace">
+            <defs>
+              <linearGradient id="ecgGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#5eead4" />
+                <stop offset="55%" stop-color="#60a5fa" />
+                <stop offset="100%" stop-color="#a78bfa" />
+              </linearGradient>
+            </defs>
+            <path
+              class="ecg-base"
+              d="M0 70h44l8 0 6-18 9 40 7-22 5 0h48l8 0 6-18 9 40 7-22 5 0h48l8 0 6-18 9 40 7-22 5 0h48l8 0 6-18 9 40 7-22 5 0h44"
+            />
+            <path
+              class="ecg-line"
+              pathLength="1"
+              d="M0 70h44l8 0 6-18 9 40 7-22 5 0h48l8 0 6-18 9 40 7-22 5 0h48l8 0 6-18 9 40 7-22 5 0h48l8 0 6-18 9 40 7-22 5 0h44"
+            />
+          </svg>
+
+          <div class="vitals-grid">
+            <div><span>Heart rate</span><strong>72 <small>bpm</small></strong></div>
+            <div><span>SpO₂</span><strong>99 <small>%</small></strong></div>
+            <div><span>Coffee</span><strong>2 <small>cups</small></strong></div>
+            <div><span>Curiosity</span><strong>∞</strong></div>
+          </div>
+
+          <p class="vitals-note">
+            “The good physician treats the disease; the great physician treats the
+            patient who has the disease.”
+            <span>— William Osler</span>
+          </p>
+        </aside>
+      </section>
+
+      <!-- ───────────────────────── About ───────────────────────── -->
+      <section class="section" id="about">
+        <div class="section-head reveal">
+          <p class="label"><span>01</span>About</p>
+          <h2>A student of medicine.<br />A fan of <em>clearer</em> explanations.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>
+              I'm Amr, a second-year medical student learning to read the body like a
+              story — systems, signals, and the small details that change everything.
+            </p>
+            <p>
+              Most of my time goes into anatomy, pathology, and the foundations of
+              clinical practice. The rest goes into software, research, and building
+              small tools that make studying — and eventually, medicine — a little
+              more human.
+            </p>
+            <ul class="chips" aria-label="Interests">
+              <li>Anatomy</li>
+              <li>Pathophysiology</li>
+              <li>Pre-clinical medicine</li>
+              <li>Evidence-based medicine</li>
+              <li>Software development</li>
+              <li>Medical AI</li>
+            </ul>
+          </div>
+
+          <div class="about-card glass reveal">
+            <div class="monogram" aria-hidden="true">A</div>
+            <h3>Currently</h3>
+            <dl>
+              <div>
+                <dt>Studying</dt>
+                <dd>UOK 2/6</dd>
+              </div>
+              <div>
+                <dt>Leaning toward</dt>
+                <dd>Medicine × software <span>(early days)</span></dd>
+              </div>
+              <div>
+                <dt>Daily tools</dt>
+                <dd>Anki, VS Code, a beaten-up notebook</dd>
+              </div>
+              <div>
+                <dt>Off-screen</dt>
+                <dd>Coffee, long walks, side projects</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── Focus ───────────────────────── -->
+      <section class="section" id="focus">
+        <div class="section-head reveal">
+          <p class="label"><span>02</span>Focus</p>
+          <h2>Four things I keep<br />coming back to.</h2>
+        </div>
+
+        <div class="cards">
+          <article class="card glass reveal">
+            <div class="card-top">
+              <span class="card-num">01</span>
+              <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 3v6a4 4 0 0 0 8 0V3" />
+                <path d="M10 13v4a4 4 0 0 0 8 0v-2" />
+                <circle cx="18" cy="13" r="2" />
+                <path d="M4 3h4M12 3h-4" />
+              </svg>
+            </div>
+            <h3>Clinical medicine</h3>
+            <p>
+              History-taking, physical exams, and the art of listening before
+              labelling. The part of medicine that happens between the lines.
+            </p>
+          </article>
+
+          <article class="card glass reveal">
+            <div class="card-top">
+              <span class="card-num">02</span>
+              <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 3h6M12 3v6l5 9a2 2 0 0 1-2 3H9a2 2 0 0 1-2-3l5-9V3" />
+                <path d="M8.5 15h7" />
+              </svg>
+            </div>
+            <h3>Research &amp; evidence</h3>
+            <p>
+              Reading papers critically, asking better questions, and turning
+              curiosity into something testable — then useful.
+            </p>
+          </article>
+
+          <article class="card glass reveal">
+            <div class="card-top">
+              <span class="card-num">03</span>
+              <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 3c0 4 10 4 10 8s-10 4-10 8" />
+                <path d="M17 3c0 4-10 4-10 8s10 4 10 8" />
+                <path d="M8 7h8M8 17h8" />
+              </svg>
+            </div>
+            <h3>Anatomy &amp; physiology</h3>
+            <p>
+              The architecture and machinery of the body — still the best story I
+              know, and the one I keep re-reading.
+            </p>
+          </article>
+
+          <article class="card glass reveal">
+            <div class="card-top">
+              <span class="card-num">04</span>
+              <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="6" y="6" width="12" height="12" rx="2" />
+                <path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2" />
+                <circle cx="12" cy="12" r="2.5" />
+              </svg>
+            </div>
+            <h3>Software &amp; AI</h3>
+            <p>
+              Web apps, automation, and small experiments where medicine, design,
+              and code overlap. Still learning — shipping anyway.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── Journey ───────────────────────── -->
+      <section class="section" id="journey">
+        <div class="section-head reveal">
+          <p class="label"><span>03</span>Journey</p>
+          <h2>The long, strange<br />road through <em>medicine</em>.</h2>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline-item reveal">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="timeline-phase">Year 1 · done</p>
+            <h3>Learning the vocabulary</h3>
+            <p>
+              Anatomy, physiology, biochemistry — the alphabet of the body. Long
+              nights, colour-coded notes, and the first taste of how much there is
+              to know.
+            </p>
+          </li>
+
+          <li class="timeline-item reveal is-now">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="timeline-phase">Year 2 · now</p>
+            <h3>How things break</h3>
+            <p>
+              Pathology and pharmacology: mechanisms, cascades, and the logic of
+              treatment. Learning to follow a symptom back to its source while the
+              pre-clinical picture starts to click.
+            </p>
+          </li>
+
+          <li class="timeline-item reveal">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="timeline-phase">Years 3–6 <span class="ahead-tag">ahead</span></p>
+            <h3>The human part</h3>
+            <p>
+              Rotations, bedside manner, and the steep learning curve of talking to
+              real people. The textbooks suddenly have faces — I'm looking forward to
+              that part.
+            </p>
+          </li>
+
+          <li class="timeline-item reveal is-now">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="timeline-phase">Alongside <span class="now-tag">now</span></p>
+            <h3>Building &amp; sharing</h3>
+            <p>
+              Software, research, and small tools that make medicine a little more
+              human. Still deciding on a specialty — writing code and asking better
+              questions in the meantime.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ───────────────────────── Study ───────────────────────── -->
+      <section class="section" id="study">
+        <div class="study-grid">
+          <div class="section-head study-copy reveal">
+            <p class="label"><span>04</span>Study</p>
+            <h2>The <em>25-minute</em><br />rule.</h2>
+            <p class="section-sub">
+              One focus block at a time. A small timer I actually use between
+              lectures — borrowed from the Pomodoro technique, built for long
+              syllabi. Feel free to use it.
+            </p>
+            <p class="study-hint">
+              <span class="pulse-dot" aria-hidden="true"></span>
+              Tip: put the phone in another room.
+            </p>
+          </div>
+
+          <div class="timer-card glass reveal" id="timerCard">
+            <div class="timer-modes" role="group" aria-label="Timer mode">
+              <button type="button" class="mode is-active" data-mode="focus" aria-pressed="true">
+                Focus <span>25</span>
+              </button>
+              <button type="button" class="mode" data-mode="short" aria-pressed="false">
+                Short <span>5</span>
+              </button>
+              <button type="button" class="mode" data-mode="long" aria-pressed="false">
+                Long <span>15</span>
+              </button>
+            </div>
+
+            <div class="timer-dial">
+              <svg viewBox="0 0 220 220" aria-hidden="true">
+                <defs>
+                  <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#5eead4" />
+                    <stop offset="50%" stop-color="#60a5fa" />
+                    <stop offset="100%" stop-color="#a78bfa" />
+                  </linearGradient>
+                </defs>
+                <circle class="ring-track" cx="110" cy="110" r="84" />
+                <circle class="ring-progress" id="ringProgress" cx="110" cy="110" r="84" />
+              </svg>
+              <div class="timer-readout">
+                <span class="timer-time" id="timerTime" role="timer" aria-live="off">25:00</span>
+                <span class="timer-state" id="timerState" aria-live="polite">Ready when you are</span>
+              </div>
+            </div>
+
+            <div class="timer-actions">
+              <button type="button" class="btn btn-primary" id="timerToggle">Start focus</button>
+              <button type="button" class="btn btn-ghost" id="timerReset">Reset</button>
+            </div>
+
+            <p class="timer-sessions">
+              <span id="sessionCount">0</span> focus sessions today
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── Contact ───────────────────────── -->
+      <section class="section contact-section" id="contact">
+        <div class="contact-panel glass reveal">
+          <p class="label center"><span>05</span>Contact</p>
+          <h2>Let's compare <em>notes</em>.</h2>
+          <p class="contact-sub">
+            Open to research collaborations, study groups, and conversations about
+            medicine, design, or the overlap between them. The fastest way to reach
+            me is email.
+          </p>
+
+          <a class="mail-btn" href="mailto:aziziamr905@gmail.com">
+            <span>aziziamr905@gmail.com</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17 17 7M8 7h9v9" />
+            </svg>
+          </a>
+
+          <ul class="socials" aria-label="Social links">
+            <li>
+              <a
+                href="https://instagram.com/callme_amr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram — @callme_amr"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none" />
+                </svg>
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/amrdev750"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub — amrdev750"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"
+                  />
+                </svg>
+                GitHub
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> Amr. Built with curiosity — and a lot of coffee.</p>
+      <a href="#top" class="back-top">Back to top <span aria-hidden="true">↑</span></a>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
