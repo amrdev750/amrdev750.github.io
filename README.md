@@ -85,15 +85,4 @@ Colors and spacing are CSS variables at the top of `styles.css`:
 
 ## Deploy
 
-The site is published with **GitHub Pages** from the `main` branch root of
-[`amrdev750/amrdev750.github.io`](https://github.com/amrdev750/amrdev750.github.io).
-Every push to `main` redeploys it; no build step is involved.
 
-To publish elsewhere, upload the folder to any static host:
-
-- **Netlify Drop** — drag the folder onto <https://app.netlify.com/drop>.
-- **Vercel** — `vercel` in this folder, framework preset "Other".
-- **Cloudflare Pages** — upload as a static site.
-
-If you change the domain, update the absolute URLs in `index.html` (canonical,
-Open Graph, Twitter), `robots.txt`, and `sitemap.xml`.
