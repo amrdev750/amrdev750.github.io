@@ -90,12 +90,14 @@
   const nav = document.getElementById("nav");
   const navToggle = document.getElementById("navToggle");
   const navLinks = document.getElementById("navLinks");
+  const navBackdrop = document.getElementById("navBackdrop");
 
   function setNav(open) {
     if (!nav || !navToggle) return;
     nav.classList.toggle("open", open);
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (navBackdrop) navBackdrop.classList.toggle("is-open", open);
   }
 
   if (navToggle) {
@@ -108,6 +110,10 @@
     navLinks.addEventListener("click", (event) => {
       if (event.target.closest("a")) setNav(false);
     });
+  }
+
+  if (navBackdrop) {
+    navBackdrop.addEventListener("click", () => setNav(false));
   }
 
   document.addEventListener("keydown", (event) => {
