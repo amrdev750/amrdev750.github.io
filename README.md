@@ -47,8 +47,12 @@ You can also double-click `index.html`, but a local server is closer to a real d
 - **Responsive** — mobile menu, single-column layouts, touch-friendly targets.
 - **Accessible** — semantic landmarks, keyboard focus styles, inert page behind the intro,
   reduced-motion support.
-- **Self-contained** — fonts are self-hosted, so there are no third-party requests, no
-  analytics, and no tracking. The whole site is static HTML, CSS, and JS.
+- **Self-contained** — fonts are self-hosted, so the only third-party request is the visitor
+  counter below. The whole site is static HTML, CSS, and JS.
+- **Visitor counter** — the footer shows total visits. It counts once per browser per day
+  (kept in `localStorage`) through [Abacus](https://abacus.jasoncameron.dev), a free,
+  cookie-free counter service. If the service is unreachable, the counter simply stays hidden.
+  To start a fresh count, change `counterNamespace` / `counterKey` in `app.js`.
 
 ## Personal details used
 

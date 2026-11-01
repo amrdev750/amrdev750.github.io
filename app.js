@@ -447,4 +447,63 @@
 
     render();
   }
+
+  /* ── Visitor counter ─────────────────────────────────────────────────── */
+
+  const visitEl = document.getElementById("visitCount");
+
+  if (visitEl) {
+    const counterBase = "https://abacus.jasoncameron.dev";
+    const counterNamespace = "amrdev750-github-io";
+    const counterKey = "visits";
+    const storageKey = "amr-visit-counted";
+
+    const localDay = () => {
+      const now = new Date();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      return `${now.getFullYear()}-${month}-${day}`;
+    };
+
+    const today = localDay();
+    let countedToday = false;
+
+    try {
+      countedToday = window.localStorage.getItem(storageKey) === today;
+    } catch {
+      countedToday = false;
+    }
+
+    const action = countedToday ? "get" : "hit";
+    const endpoint = `${counterBase}/${action}/${counterNamespace}/${counterKey}`;
+
+    fetch(endpoint, {
+      cache: "no-store",
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Counter request failed: ${response.status}`);
+        return response.json();
+      })
+      .then((data) => {
+        const total = Number(data?.value);
+        if (!Number.isFinite(total)) throw new Error("Counter returned no value");
+
+        visitEl.textContent = total.toLocaleString("en-US");
+        visitEl.parentElement.hidden = false;
+
+        if (!countedToday) {
+          try {
+            window.localStorage.setItem(storageKey, today);
+          } catch {
+            /* private mode — the count still displays, it just may increment again */
+          }
+        }
+      })
+      .catch(() => {
+        /* Counter service unreachable — leave the footer clean. */
+        visitEl.parentElement.hidden = true;
+      });
+  }
 })();

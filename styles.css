@@ -1470,6 +1470,27 @@ body.has-cursor .cursor-glow {
   margin: 0;
 }
 
+.visits {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.visits[hidden] {
+  display: none;
+}
+
+.visits-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 8px var(--teal);
+  opacity: 0.85;
+}
+
 .back-top {
   display: inline-flex;
   align-items: center;
