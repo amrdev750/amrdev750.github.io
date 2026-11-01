@@ -1474,12 +1474,18 @@ body.has-cursor .cursor-glow {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  color: var(--muted);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
 }
 
 .visits[hidden] {
   display: none;
+}
+
+#visitCount {
+  color: var(--teal);
+  font-weight: 600;
 }
 
 .visits-dot {
