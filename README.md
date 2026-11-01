@@ -54,6 +54,10 @@ You can also double-click `index.html`, but a local server is closer to a real d
 
 - Name: **Amr**
 - Course: **UOK 2/6** (year 2 of a 6-year medical course)
+  - Year 1: organic chemistry, anatomy
+  - Year 2: physiology, pharmacology, microbiology
+  - Years 3–5: pathology, ENT, biochemistry
+  - Year 6: bedside rotations
 - Email: **aziziamr905@gmail.com**
 - Instagram: **[@callme_amr](https://instagram.com/callme_amr)**
 - GitHub: **[amrdev750](https://github.com/amrdev750)**
