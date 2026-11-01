@@ -16,7 +16,7 @@ amr/
 ├── favicon.svg             → site icon
 ├── apple-touch-icon.png    → iOS home-screen icon (180×180)
 ├── og-image.png            → social share card (1200×630)
-├── fonts/                  → self-hosted Sora + Instrument Serif WOFF2 files
+├── fonts/                  → self-hosted Sora + Instrument Serif (OFL) files
 ├── robots.txt              → crawler rules
 ├── sitemap.xml             → single-page sitemap
 ├── .nojekyll               → serve files as-is on GitHub Pages
