@@ -457,6 +457,7 @@
     const counterNamespace = "amrdev750-github-io";
     const counterKey = "visits";
     const storageKey = "amr-visit-counted";
+    const cacheKey = "amr-visit-total";
 
     const localDay = () => {
       const now = new Date();
@@ -465,45 +466,69 @@
       return `${now.getFullYear()}-${month}-${day}`;
     };
 
+    const showCount = (total) => {
+      visitEl.textContent = total.toLocaleString("en-US");
+      visitEl.parentElement.hidden = false;
+    };
+
     const today = localDay();
     let countedToday = false;
+    let cachedTotal = null;
 
     try {
       countedToday = window.localStorage.getItem(storageKey) === today;
+      const cached = window.localStorage.getItem(cacheKey);
+      if (cached !== null) {
+        const parsed = Number(cached);
+        if (Number.isFinite(parsed)) cachedTotal = parsed;
+      }
     } catch {
-      countedToday = false;
+      /* private mode — no cache, the request may still work */
     }
+
+    /* Show the last known total immediately; refresh it from the service below. */
+    if (cachedTotal !== null) showCount(cachedTotal);
 
     const action = countedToday ? "get" : "hit";
     const endpoint = `${counterBase}/${action}/${counterNamespace}/${counterKey}`;
 
-    fetch(endpoint, {
-      cache: "no-store",
-      credentials: "omit",
-      referrerPolicy: "no-referrer",
-    })
-      .then((response) => {
+    const request = async () => {
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 7000);
+
+      try {
+        const response = await fetch(endpoint, {
+          cache: "no-store",
+          credentials: "omit",
+          referrerPolicy: "no-referrer",
+          signal: controller.signal,
+        });
+
         if (!response.ok) throw new Error(`Counter request failed: ${response.status}`);
-        return response.json();
-      })
-      .then((data) => {
+
+        const data = await response.json();
         const total = Number(data?.value);
         if (!Number.isFinite(total)) throw new Error("Counter returned no value");
+        return total;
+      } finally {
+        window.clearTimeout(timeout);
+      }
+    };
 
-        visitEl.textContent = total.toLocaleString("en-US");
-        visitEl.parentElement.hidden = false;
+    request()
+      .then((total) => {
+        showCount(total);
 
-        if (!countedToday) {
-          try {
-            window.localStorage.setItem(storageKey, today);
-          } catch {
-            /* private mode — the count still displays, it just may increment again */
-          }
+        try {
+          window.localStorage.setItem(cacheKey, String(total));
+          if (!countedToday) window.localStorage.setItem(storageKey, today);
+        } catch {
+          /* private mode — the count still displays, it just may increment again */
         }
       })
       .catch(() => {
-        /* Counter service unreachable — leave the footer clean. */
-        visitEl.parentElement.hidden = true;
+        /* Keep the cached total visible; hide the line only if we have nothing. */
+        if (cachedTotal === null) visitEl.parentElement.hidden = true;
       });
   }
 })();

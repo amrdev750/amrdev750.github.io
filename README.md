@@ -51,8 +51,9 @@ You can also double-click `index.html`, but a local server is closer to a real d
   counter below. The whole site is static HTML, CSS, and JS.
 - **Visitor counter** — the footer shows total visits. It counts once per browser per day
   (kept in `localStorage`) through [Abacus](https://abacus.jasoncameron.dev), a free,
-  cookie-free counter service. If the service is unreachable, the counter simply stays hidden.
-  To start a fresh count, change `counterNamespace` / `counterKey` in `app.js`.
+  cookie-free counter service. The last known total is cached, so it stays visible during
+  short outages; on a first visit with the service down, the line stays hidden. To start a
+  fresh count, change `counterNamespace` / `counterKey` in `app.js`.
 
 ## Personal details used
 
